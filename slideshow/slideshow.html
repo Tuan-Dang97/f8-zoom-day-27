@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow với Custom Event</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            background: white;
+            border: 1px solid #ccc;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px 40px;
+            text-align: center;
+            min-height: 400px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .slide h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .slide p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: white;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #f0f0f0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .dots-container {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide active">
+            <h1>Slide 1</h1>
+        </div>
+
+        <div class="slide">
+           <h1>Slide 2</h1>
+        </div>
+
+        <div class="slide">
+            <h1>Slide 3</h1>
+        </div>
+
+        <div class="slide">
+            <h1>Slide 4</h1>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="prevSlide()">❮ Previous</button>
+            <button class="btn" onclick="nextSlide()">Next ❯</button>
+        </div>
+
+        <div class="dots-container">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </div>
+
+    <script src="slideshow.js"></script>
+</body>
+</html>
